@@ -1,15 +1,12 @@
-let mainContainer = document.querySelector(".container");
+const mainContainer = document.querySelector(".container");
 
-//function makeParent(divNum) {
- //   for (i = 0; i < divNum; i++) {
- //       let div = document.createElement("div");
-//        mainContainer.appendChild(div);
-//        div.setAttribute("class","grid");
- //   };
-    
-//};
-
-//makeDivs(256);
+function RGBcolor() {
+    var R = Math.floor(Math.random() * 256);
+    var G = Math.floor(Math.random() * 256);
+    var B = Math.floor(Math.random() * 256);
+    var randomcolor = "rgb(" + R + "," + G + "," + B + ")";  
+    return randomcolor;
+  }
 
 function makeParentDivs(divNum) {
     for (i = 0; i < divNum; i++) {
@@ -19,6 +16,15 @@ function makeParentDivs(divNum) {
         makeChildDivs(divNum)
     };
 
+    const changeColor = document.querySelectorAll(".child");
+
+    changeColor.forEach((div) => {
+        div.addEventListener("mouseover", () => {
+            //div.classList.add("color");
+            let newColor = RGBcolor();
+            div.style.backgroundColor = newColor; 
+        });
+    });
 };
 
 function makeChildDivs(divNum) {
@@ -30,16 +36,18 @@ function makeChildDivs(divNum) {
     };
 };
 
+const gridButton = document.querySelector(".grid-button");
 
+gridButton.addEventListener("click", () => {
+    promptAnswer = prompt("How many squares per side?",);
+    deletableNodes = promptAnswer;
+    const children = document.querySelector(".parent");
 
+    if (children != null) {
+        while (mainContainer.firstChild) {
+            mainContainer.removeChild(mainContainer.firstChild);
+        };
+    };
 
-makeParentDivs(40
-)
-
-const changeColor = document.querySelectorAll(".child");
-
-changeColor.forEach((div) => {
-    div.addEventListener("mouseenter", () => {
-        div.classList.add("color");
-    });
+    makeParentDivs(promptAnswer);
 });

@@ -5,20 +5,29 @@ html, body {
     justify-content: center;
 }
 
+.main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
 .container {
     display: flex;
     justify-content: center;
     width: 960px;
     height: 960px;
+    border: 1px solid black;
 }
 
 .parent {
     display: flex;
     flex-direction: column;
-   
-    
 }
-
 
 .grid {
     flex-grow: 1;
